@@ -27,8 +27,7 @@ compose-junit = { group = "androidx.compose.ui", name = "ui-test-junit4", versio
 compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "compose" }
 compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "compose" }
 compose-material3 = { group = "androidx.compose.material3", name = "material3-android", version.ref = "composeMaterial" }
-
-
+maven = { group = "com.github.dcendents", name = "android-maven-gradle-plugin", version = "2.1" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -51,4 +51,8 @@ dependencies {
     implementation(libs.compose.junit)
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.compose.ui.test.manifest)
+
+    implementation(libs.maven)
 }
+
+group "com.github.betterafter"
