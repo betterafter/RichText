@@ -67,7 +67,7 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 groupId = "com.github.betterafter"
-                artifactId = "richtext"
+                artifactId = "RichText"
                 version = "1.0.0"
                 afterEvaluate { artifact(tasks.getByName("bundleReleaseAar"))}
             }
