@@ -1,19 +1,19 @@
 plugins {
-    alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.android.library)
+    id("maven-publish")
 }
+
+group "com.github.betterafter"
+version "1.0.0"
 
 android {
     namespace = "com.keykat.richtext"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.keykat.richtext"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -33,10 +33,17 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    publishing {
+        publishing {
+            singleVariant("release_apk")
+
+            singleVariant("release_aab")
+        }
+    }
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -55,4 +62,15 @@ dependencies {
     implementation(libs.maven)
 }
 
-group "com.github.betterafter"
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                groupId = "com.github.betterafter"
+                artifactId = "richtext"
+                version = "1.0.0"
+                afterEvaluate { artifact(tasks.getByName("bundleReleaseAar"))}
+            }
+        }
+    }
+}
